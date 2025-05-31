@@ -1,0 +1,5 @@
+# Takes name of turtle and deletes it, returns a success boolean and debug message
+string name
+---
+bool success
+string debug_message
