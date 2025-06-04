@@ -52,7 +52,7 @@ class MasterTurtleNode(Node):
         angle_diff= self.trajectory_angle - master_theta
         normalized_diff= np.arctan2(np.sin(angle_diff), np.cos(angle_diff)) 
         ANGLE_TOLERANCE= 0.02
-        KP_ANGLE=3.5
+        KP_ANGLE=4
         KP_MOVEMENT=1.5
 
         if normalized_diff>0:
@@ -63,7 +63,7 @@ class MasterTurtleNode(Node):
                 velocity_data.angular.z = -1 * KP_ANGLE * abs(normalized_diff)
 
         if isinstance(self.nearest_distance, float):
-            velocity_data.linear.x=max((KP_MOVEMENT * self.nearest_distance), 1.25)
+            velocity_data.linear.x=max((KP_MOVEMENT * self.nearest_distance), 1.5)
             if(abs(self.nearest_distance)<0.3):
                 self.turtle_chased_down()
         self.velocity_publisher.publish(velocity_data)
